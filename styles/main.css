@@ -20,6 +20,11 @@
     margin-bottom: 15px;
   }
 
+  button {
+    float: left;
+    padding: 3px;
+  }
+
   images{
       padding: 30px;
       border-radius: 5%;
