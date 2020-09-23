@@ -5,22 +5,45 @@
     <meta name=viewport content=width=device-width, initial-scale=1.0>
     <title>Document</title>
     <link rel=stylesheet href=./styles/main.css>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script defer src=./scripts/app.js></script>
 </head>
 <body>
 <header>
-    <div class="headsection">
-        <h1> Tomagotchi Pet</h1>
-        <span><button class="button">FeedMe</button></span>
-        <span><button class="button">PlayMe</button></span>
-        <span><button class="button">LightsOff</button></span>
-    </div>
+    <h1> Tomagotchi Pet</h1> 
+</header>
+<section class="inputs">
+    <input type="text" id="name-field">
+    <button id="set-name">Set My Name"</button>
+</section>
+<section>
     <div class="images">
         <img src="https://png.pngitem.com/pimgs/s/518-5180944_kawaii-cute-angel-kitty-anime-kawaii-cute-cat.png" alt="cat image">
     </div>
-</header>
+    <div class="playbutton">
+        <button class="playbuttons" id="feedme">FeedMe</button>
+        <button class="playbuttons" id="lightsoff">LightsOff</button>
+        <button class="playbuttons" id="play">Play With Me</button>
+    </div>
+    <div>
+        <label>boredom</label>
+        <progress id="boredom" class="progressbar" max="10" value="2"></progress>
+    </div>
+    <div> 
+        <label>Hunger</label>
+        <progress id="hunger" class="progressbar" max="10" value="2"></progress>
+        
+    </div>
+    <div>
+        <label>sleepiness</label>
+        <progress id="sleepiness" class="progressbar" max="10" value="2"></progress>
+        
+    </div>    
+</section>
+
 </body>
 </html>
