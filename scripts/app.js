@@ -1,4 +1,7 @@
+//Global varibales
+//const images = $('#image');
 
+// Class Declaration
 class tomagotchi{
     constructor(name,age = 1,hunger=1,sleepiness =1,boredom=1){
         this.name = name;
@@ -12,6 +15,7 @@ class tomagotchi{
     }
     lightsOff(){
         this.sleepiness--;
+        this.boredom++;
     }
     petPlay(){
         this.boredom--;
@@ -48,70 +52,43 @@ function getName(){
     return $name.val();
 }
 
-function setMeters(myTom){
-    $(document).ready(function(){
-        $('#hunger').progressbar({
-            value: myTom.hunger
-        })
-    })
+function updateMeters(myTom){
+    setInterval(()=>{
+        $('#hunger').val(myTom.hunger);
+        $('#sleepiness').val(myTom.sleepiness);
+        $('#boredom').val(myTom.boredom);
+       },700)
 }
-const createMeters = function (numberOfSquares) {
 
-    // $( function() {
-    //     $( "#progressbar" ).progressbar({
-    //       value: 37
-    //     });
-    //   } );
-    const $squaresContainer = $('.progressbar');
-    const $square = $('<div />');
-    //   // Add squre classs
-    $square.addClass('square');
-    //   // Get Random Color
-    //   // console.log(getRandomColor());
-    $square.css('background-color', 'red');
-    //   // Append to parent container
-    $squaresContainer.append($square);
-  
-    // Clear Parent Container
-    //$squaresContainer.empty();
-  
-    // for (let i = 1; i <= numberOfSquares; i++) {
-    //   // const $square = $('<div class="square" />');
-    //   // Create div
-    //   const $square = $('<div />');
-    //   // Add squre classs
-    //   $square.addClass('square');
-    //   // Get Random Color
-    //   // console.log(getRandomColor());
-    //   $square.css('background-color', 'red');
-    //   // Append to parent container
-    //   $squaresContainer.append($square);
-    // }
-    // for (let i = 1; i <= numberOfSquares; i++) {
-    //     // const $square = $('<div class="square" />');
-    //     // Create div
-    //     const $square = $('<div />');
-    //     // Add squre classs
-    //     $square.addClass('square');
-    //     // Get Random Color
-    //     // console.log(getRandomColor());
-    //     $square.css('background-color', 'red');
-    //     // Append to parent container
-    //     $squaresContainer.append($square);
-    //   }
-    //   for (let i = 1; i <= numberOfSquares; i++) {
-    //     // const $square = $('<div class="square" />');
-    //     // Create div
-    //     const $square = $('<div />');
-    //     // Add squre classs
-    //     $square.addClass('square');
-    //     // Get Random Color
-    //     // console.log(getRandomColor());
-    //     $square.css('background-color', 'red');
-    //     // Append to parent container
-    //     $squaresContainer.append($square);
-    //   }
-  };
+function gameison(myTom){
+    $('#feedme').on('click',function(){
+        //console.log(images.attr("src"));
+        myTom.feed();
+    })
+    $('#play').on('click',function(){
+        setInterval(()=>{
+            $('#image').attr("src","./images/play1.png");
+        },100);
+        
+        myTom.petPlay();
+     })
+     $('#lightsoff').on('click',function(){
+         myTom.lightsOff();
+     })
+}
+
+function petkiller(myTom){
+    setInterval(()=>{
+        console.log("checking for tom's death");
+        if(myTom.hunger > 9 || myTom.sleepiness > 9 || myTom.boredom > 9){
+        alert('you killed your pet');
+        //reset vales
+        myTom.hunger = 1;
+        myTom.boredom =1;
+        myTom.sleepiness =1;
+       }},300)
+
+}
 
 
 const $btn = $('#set-name');
@@ -123,25 +100,18 @@ $btn.on('click',function(){
    myTom.currentState();
 
    //Change the meters every second for now.
-   setInterval(()=>{
-    $('#hunger').val(myTom.hunger);
-    $('#sleepiness').val(myTom.sleepiness);
-    $('#boredom').val(myTom.boredom);
-   },1000)
+   updateMeters(myTom);
    
     //work on timers
    createTimers(myTom);
 
    //Actions on buttons
-   $('#feedme').on('click',function(){
-       myTom.feed();
-   })
-   $('#play').on('click',function(){
-    myTom.petPlay();
-    })
-    $('#lightsoff').on('click',function(){
-        myTom.lightsOff();
-    })
+   gameison(myTom);
+
+   //pet killer
+   petkiller(myTom);
+   
+
    $btn.hide();
    $('#name-field').hide();
 })

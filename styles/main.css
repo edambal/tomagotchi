@@ -33,7 +33,7 @@
       margin: auto;
   }
 
-  .squares {
+  /* .squares {
     padding: 0 3px 3px;
     align-items: right;
   }
@@ -46,13 +46,18 @@
     padding: 5;
     margin-right : 5px;
     float: right
-  }
+  } */
   .label {
     float: right;
   }
 .progressbar{
     display:block;
     margin: 0 auto;
+    background-color: lightblue;
+    color: lightcyan;
+    width:225px;
+    height:15px;
+    border-radius: 2px;
 }
   .playbutton {
     display:flex;
