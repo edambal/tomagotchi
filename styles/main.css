@@ -39,7 +39,7 @@
         background:rgb(0,0,0,0.5);
         height: 80px;
     }
-    .main{
+    main{
         width:25vw;
         height:30vh;
         background: lightyellow;
@@ -58,6 +58,24 @@
   button {
     float: left;
     padding: 3px;
+  }
+
+  /* .gameplay{
+      display:none;
+  } */
+
+  .egg-shape{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+    border-radius: 80% 15% 55% 50% / 55% 15% 80% 50%;
+    border: 3px solid #1c446b;
+    transform: rotate(-45deg);
+    padding: 3px 120px 5px 120px;
+    margin-top: 30px;
+    background: #ffc000;
   }
 
   .images{
@@ -102,10 +120,17 @@
       background-color: paleturquoise;
       border-radius: 5px;
   }
+  #set-name{
+    margin:15px;
+    background-color: rgb(214, 119, 55);
+    border-radius: 20px;
+    font-family: 'poppins';
+  }
   label{
     display:flex;
     justify-content: center;
   }
+  
   
 
   

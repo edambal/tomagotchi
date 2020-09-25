@@ -1,6 +1,6 @@
 //Global varibales
 //const images = $('#image');
-let count=0;
+
 
 // Class Declaration
 class tomagotchi{
@@ -61,14 +61,14 @@ function updateMeters(myTom){
        },700)
 }
 
-function gameison(myTom){
+function gameison(myTom,count){
     const $image = $('#image');
     $('#feedme').on('click',function(){
         //console.log(images.attr("src"));  
         myTom.feed();
     })
-    $('#play').on('click',function(count){  
-        setInterval(function (count){
+    $('#play').on('click',function(){  
+        setInterval(function (){
             console.log("Outside the if condition" + count);
             if(count > 4){
                 console.log("inside the if condition" + count);
@@ -104,15 +104,30 @@ function petkiller(myTom){
 }
 
 
+
+const $gameplay = $('.gameplay');
 const $btn = $('#set-name');
+const $main = $('main');
+
+// Main Game play stays hidden till the name is entered
+$gameplay.hide();
+
+//Start Events after the pet name button is clicked
 $btn.on('click',function(){
     console.log("button is clicked");
-    $('body').css('background-image','none');
-    //$('#bg').css('background-image','none');
+    $('#bg').hide(5000);
+    $('body').css('background-image',`url('/Users/sravanthiedam/sei/deliverables/tomagotchi/images/GamingBackground2.jpg')`);
+    // $('.main').css('background-image',`url('/Users/sravanthiedam/sei/deliverables/tomagotchi/images/GamingBackground2.jpg')`);
+    // setTimeout(function(){
+    // },5000);
 
+    //$('#bg').css('background-image','none');
+    $main.hide(5000);
+    $gameplay.show(6000);
    const name = getName();
    const myTom = createTomagotchi(name);
    myTom.currentState();
+   $gameplay.append(`<p>${myTom.name}</p>`);
 
    //Change the meters every second for now.
    updateMeters(myTom);
@@ -120,14 +135,14 @@ $btn.on('click',function(){
     //work on timers
    createTimers(myTom);
 
-   //Actions on buttons
-   gameison(myTom);
+   //Actions on buttons. count passed to increment images
+   let count=0;
+   gameison(myTom,count);
 
    //pet killer
    petkiller(myTom);
    
 
-//    $btn.hide();
-//    $('#name-field').hide();
+
 })
 
