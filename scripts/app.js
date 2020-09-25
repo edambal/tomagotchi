@@ -1,5 +1,6 @@
 //Global varibales
 //const images = $('#image');
+let count=0;
 
 // Class Declaration
 class tomagotchi{
@@ -61,18 +62,30 @@ function updateMeters(myTom){
 }
 
 function gameison(myTom){
+    const $image = $('#image');
     $('#feedme').on('click',function(){
-        //console.log(images.attr("src"));
+        //console.log(images.attr("src"));  
         myTom.feed();
     })
-    $('#play').on('click',function(){
-        setInterval(()=>{
-            $('#image').attr("src","./images/play1.png");
-        },100);
+    $('#play').on('click',function(count){  
+        setInterval(function (count){
+            console.log("Outside the if condition" + count);
+            if(count > 4){
+                console.log("inside the if condition" + count);
+                count =0; 
+            }
+            count++;
+            let imgsrc;
+            imgsrc = `./images/catplay${count}.png`;
+            $image.attr("src",imgsrc);
+            myTom.petPlay();
+        },1000);    
         
-        myTom.petPlay();
      })
      $('#lightsoff').on('click',function(){
+        let imgsrc;
+        imgsrc = `./images/catsleepy1.png`;
+        $image.attr("src",imgsrc);
          myTom.lightsOff();
      })
 }
@@ -94,7 +107,9 @@ function petkiller(myTom){
 const $btn = $('#set-name');
 $btn.on('click',function(){
     console.log("button is clicked");
-    
+    $('body').css('background-image','none');
+    //$('#bg').css('background-image','none');
+
    const name = getName();
    const myTom = createTomagotchi(name);
    myTom.currentState();
@@ -112,7 +127,7 @@ $btn.on('click',function(){
    petkiller(myTom);
    
 
-   $btn.hide();
-   $('#name-field').hide();
+//    $btn.hide();
+//    $('#name-field').hide();
 })
 

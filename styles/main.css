@@ -4,21 +4,56 @@
   
   body {
     font-family: 'Open Sans', sans-serif;
-    background-color: gold;
+    background-image:url('../images/GamingBackground1.jpg');
     padding: 0;
     margin: 0;
   }
   
+  .bg{
+      width: 100vw;
+      height: 100vh;
+      background-image: url('../images/GamingBackground1.jpg'); 
+  }
+
   h1 {
     padding: 0;
     margin: 0 0 15px;
+    font-family: 'poppins',Verdana, Geneva, Tahoma, sans-serif;
+    color: coral;
+    text-align: center;
   }
 
   header{
-      background-color: cornsilk;
-    padding: 20px;
-    margin-bottom: 15px;
-  }
+    background-image: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+    linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+    linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%),url('../images/GamingBackground1.jpg');
+    height:10vh; 
+   
+    }
+    .header-bar:hover{
+        background: green;
+        color:yellow;
+        transition: 4s;
+    }
+    .heading{
+        background:rgb(0,0,0,0.5);
+        height: 80px;
+    }
+    .main{
+        width:25vw;
+        height:30vh;
+        background: lightyellow;
+        border-radius: 50%;
+        color:white;
+        top:50%;
+        left:27%;
+        position:absolute;
+        transform:translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+        text-align: center;
+      }
+     
 
   button {
     float: left;
@@ -27,26 +62,23 @@
 
   .images{
       display:flex;
-      justify-content: center;
-      padding-bottom: 100px;
+      justify-content: center; 
+      align-items: center;
+      background-color:blueviolet;
+      width:30vh;
+      height:30vh;
+      padding: 3px 120px 5px 120px;
       border-radius: 5%;
       margin: auto;
   }
 
-  /* .squares {
-    padding: 0 3px 3px;
-    align-items: right;
+  .image{
+    background-color: yellow;
+    width:20vw;
+    height:20vh;
   }
-  
-  .squares div {
-    background-color: blue;
-    display: table;
-    width:  2vh;
-    height: 2vh;
-    padding: 5;
-    margin-right : 5px;
-    float: right
-  } */
+
+
   .label {
     float: right;
   }

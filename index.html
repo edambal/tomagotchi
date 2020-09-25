@@ -14,35 +14,50 @@
 </head>
 <body>
 <header>
-    <h1> Tomagotchi Pet</h1> 
+    <div class="header-bar">
+        <h1 class="heading">Tomagotchi Pet</h1>
+    </div>
 </header>
-<section class="inputs">
-    <input type="text" id="name-field">
-    <button id="set-name">Pet My Name</button>
-</section>
 <section>
-    <div class="images">
-        <img id="image" src="./images/Original1.png" alt="pet image">
-    </div>
-    <div class="playbutton">
-        <button class="playbuttons" id="feedme">FeedMe</button>
-        <button class="playbuttons" id="lightsoff">LightsOff</button>
-        <button class="playbuttons" id="play">Play With Me</button>
-    </div>
-    <div>
-        <label>boredom</label>
-        <progress id="boredom" class="progressbar" max="10" value="10"></progress>
-    </div>
-    <div> 
-        <label>Hunger</label>
-        <progress id="hunger" class="progressbar" max="10" value="10"></progress>
         
-    </div>
-    <div>
-        <label>sleepiness</label>
-        <progress id="sleepiness" class="progressbar" max="10" value="10"></progress> 
-    </div>    
+        <div class="main">
+            <div id="bg">
+                <form class="inputs">
+                    <input style="margin-bottom: 5px;" type="text" name="" placeholder="Enter your Pet's Name" id="name-field">
+                    <br>
+                    <input type="button" id="set-name" value="Pet My Name">
+                </form>
+            </div>
+            <!-- <section>
+                <div class="images">
+                    <img id="image" class="image" src="./images/catOriginal1.png" alt="pet image">
+                </div>
+                <div class="playbutton">
+                    <button class="playbuttons" id="feedme">FeedMe</button>
+                    <button class="playbuttons" id="lightsoff">LightsOff</button>
+                    <button class="playbuttons" id="play">Play With Me</button>
+                </div>
+                <div>
+                    <label>boredom</label>
+                    <progress id="boredom" class="progressbar" max="10" value="10"></progress>
+                </div>
+                <div> 
+                    <label>Hunger</label>
+                    <progress id="hunger" class="progressbar" max="10" value="10"></progress>
+                    
+                </div>
+                <div>
+                    <label>sleepiness</label>
+                    <progress id="sleepiness" class="progressbar" max="10" value="10"></progress> 
+                </div>    
+            </section> -->
+    
+        </div>
+        </div>
+    
+
 </section>
+
 
 </body>
 </html>
