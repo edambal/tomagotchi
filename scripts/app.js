@@ -45,7 +45,7 @@ function createTimers(myTom){
         myTom.sleepiness++;
         myTom.boredom++;
         myTom.currentState();
-    },10000);
+    },15000);
 }
 
 function getName(){
@@ -63,12 +63,17 @@ function updateMeters(myTom){
 
 function gameison(myTom,count){
     const $image = $('#image');
+    const timer=setInterval(()=>{
+        console.log("Interval set");
+    },1000);
+    clearInterval(timer);
     $('#feedme').on('click',function(){
-        //console.log(images.attr("src"));  
+        //console.log(images.attr("src"));
+        //clearInterval(playtimer);  
         myTom.feed();
     })
     $('#play').on('click',function(){  
-        setInterval(function (){
+        const playtimer=setInterval(function (){
             console.log("Outside the if condition" + count);
             if(count > 4){
                 console.log("inside the if condition" + count);
@@ -83,6 +88,7 @@ function gameison(myTom,count){
         
      })
      $('#lightsoff').on('click',function(){
+        //clearInterval(playtimer);
         let imgsrc;
         imgsrc = `./images/catsleepy1.png`;
         $image.attr("src",imgsrc);
@@ -103,11 +109,16 @@ function petkiller(myTom){
 
 }
 
+function agetransition(myTom){
+
+}
+
 
 
 const $gameplay = $('.gameplay');
 const $btn = $('#set-name');
 const $main = $('main');
+
 
 // Main Game play stays hidden till the name is entered
 $gameplay.hide();
@@ -117,17 +128,46 @@ $btn.on('click',function(){
     console.log("button is clicked");
     $('#bg').hide(5000);
     $('body').css('background-image',`url('/Users/sravanthiedam/sei/deliverables/tomagotchi/images/GamingBackground2.jpg')`);
-    // $('.main').css('background-image',`url('/Users/sravanthiedam/sei/deliverables/tomagotchi/images/GamingBackground2.jpg')`);
-    // setTimeout(function(){
-    // },5000);
-
+    
     //$('#bg').css('background-image','none');
     $main.hide(5000);
     $gameplay.show(6000);
    const name = getName();
    const myTom = createTomagotchi(name);
    myTom.currentState();
-   $gameplay.append(`<p>${myTom.name}</p>`);
+   const $para=$('#name-capture');
+   $para.find("p").html(`I am your lovely pet <span id="givenname">${myTom.name}</span>.<br> Play with me , feed me when i am hungry, turn off lights when i am tired`); 
+   $para.css({
+    "display":"flex",
+    "align-items":"center",
+    "width":"33vw",
+    "height":"24vh",
+    "background": "rgba(255,225,255,0)",
+    "border-radius": "30%",
+    "color":"white",
+    "top":"40%",
+    "left":"50%",
+    "position":"absolute",
+    "transform":"translate(-50%, -50%)",
+    "box-sizing": "border-box",
+    "padding": "10px 30px",
+    "font-family":"poppins",
+    "font-weight":"800",
+    "text-align": "center",
+    "color":"purple",
+     "border": "2px solid rgba(255,255,255,0.2)",
+    // "font-size": "20 px",
+    "position": "absolute",
+    "transform": "translate(-50%, -50%) skewY(-6deg)",
+    "transform-origin": "bottom left",
+    // "color": "#fff",
+	// "text-shadow": "0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135",
+    // "font": "20px 'ChunkFiveRegular'"
+    "color": "#fff",
+	"text-shadow": "0px -1px 4px white, 0px -2px 10px yellow, 0px -10px 20px #ff8000, 0px -18px 40px red",
+	"font": "30px 'BlackJackRegular'"
+  })
+
 
    //Change the meters every second for now.
    updateMeters(myTom);
@@ -138,6 +178,9 @@ $btn.on('click',function(){
    //Actions on buttons. count passed to increment images
    let count=0;
    gameison(myTom,count);
+
+   //transition on age
+    agetransition(myTom);
 
    //pet killer
    petkiller(myTom);
