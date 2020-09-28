@@ -135,6 +135,7 @@ function setcss(myTom){
    $para.find("p").html(`Welcome to <span>${myTom.name}</span>'s world.<br> Play with me , feed me when i am hungry, turn off lights when i am tired. <br> <span id="clue">**clue: Don't let meters fill up. They fill I Die**</span>`); 
    $para.css({
     "display":"flex",
+    "padding-bottom":"30px",
     "align-items":"center",
     "width":"33vw",
     "height":"24vh",
