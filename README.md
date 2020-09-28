@@ -10,6 +10,9 @@ This is a game where you take care of the pet in various ways. Your target is to
 The game can end only when any of the meters fill up.
 The pet should have characteristics and age which grows at certain interval.
 
+#Wireframe
+![WireFrame](./images/WireFrame.png)
+
 #the approach taken
 #Started with the basic approach to fulfill the minimum functionality required.
 Started with a basic wireframe of how the game looks like. With 3 buttons which will append or decerement the meters when action taken.
