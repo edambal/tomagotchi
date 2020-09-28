@@ -37,14 +37,14 @@ function createTomagotchi(name){
     return tomg;
 }
 
-function createTimers(myTom){
+function idleTimers(myTom){
     const time = 30;
     console.log(myTom.name);
     const timer= setInterval(function(){
         myTom.hunger++;
         myTom.sleepiness++;
         myTom.boredom++;
-        myTom.currentState();
+        //myTom.currentState();
     },15000);
 }
 
@@ -61,19 +61,25 @@ function updateMeters(myTom){
        },700)
 }
 
-function gameison(myTom,count){
+function gameison(myTom,count,character){
     const $image = $('#image');
-    const timer=setInterval(()=>{
-        console.log("Interval set");
-    },1000);
-    clearInterval(timer);
+    // const timer=setInterval(()=>{
+    //     console.log("Interval set");
+    // },1000);
+    // clearInterval(timer);
+    console.log(character);
+    imgsrc = `./images/${character}Original1.png`;
+    $image.attr("src",imgsrc);
     $('#feedme').on('click',function(){
         //console.log(images.attr("src"));
         //clearInterval(playtimer);  
+        let imgsrc;
+        imgsrc = `./images/${character}eating.png`;
+        $image.attr("src",imgsrc);
         myTom.feed();
     })
-    $('#play').on('click',function(){  
-        const playtimer=setInterval(function (){
+    $('#play').on('click',function(timer){  
+        const playtimer=setTimeout(function (){
             console.log("Outside the if condition" + count);
             if(count > 4){
                 console.log("inside the if condition" + count);
@@ -81,16 +87,16 @@ function gameison(myTom,count){
             }
             count++;
             let imgsrc;
-            imgsrc = `./images/catplay${count}.png`;
+            imgsrc = `./images/${character}play${count}.png`;
             $image.attr("src",imgsrc);
-            myTom.petPlay();
         },1000);    
+        myTom.petPlay();
         
      })
      $('#lightsoff').on('click',function(){
         //clearInterval(playtimer);
         let imgsrc;
-        imgsrc = `./images/catsleepy1.png`;
+        imgsrc = `./images/${character}sleepy1.png`;
         $image.attr("src",imgsrc);
          myTom.lightsOff();
      })
@@ -98,7 +104,7 @@ function gameison(myTom,count){
 
 function petkiller(myTom){
     setInterval(()=>{
-        console.log("checking for tom's death");
+        //Check if any of the meters have reached end of it
         if(myTom.hunger > 9 || myTom.sleepiness > 9 || myTom.boredom > 9){
         alert('you killed your pet');
         //reset vales
@@ -109,7 +115,52 @@ function petkiller(myTom){
 
 }
 
+function setcss(myTom){
+    const $para=$('#name-capture');
+   $para.find("p").html(`Welcome to <span>${myTom.name}</span>'s world.<br> Play with me , feed me when i am hungry, turn off lights when i am tired. <br> <span id="clue">**clue: Don't let meters fill up. They fill I Die**</span>`); 
+   $para.css({
+    "display":"flex",
+    "align-items":"center",
+    "width":"33vw",
+    "height":"24vh",
+    "background": "rgba(255,225,255,0)",
+    "border-radius": "30%",
+    "color":"white",
+    "top":"40%",
+    "left":"50%",
+    "position":"absolute",
+    "transform":"translate(-50%, -50%)",
+    "box-sizing": "border-box",
+    "padding": "10px 30px",
+    "font-family":"poppins",
+    "font-weight":"800",
+    "text-align": "center",
+    "color":"purple",
+    //  "border": "2px solid rgba(255,255,255,0.2)",
+    "position": "absolute",
+    "transform": "translate(-50%, -50%) skewY(-6deg)",
+    "transform-origin": "bottom left",
+    "color": "#fff",
+	"text-shadow": "0px -1px 4px white, 0px -2px 10px yellow, 0px -10px 20px #ff8000, 0px -18px 40px red",
+	"font": "30px 'BlackJackRegular'"
+  })
+  $para.find("span").css({
+      "font" : "45px 'ChunkFiveRegular'",
+      "color": "maroon"
+  })
+  //console.log($para.find("p").html());
+
+    $('#clue').css({
+        "font" : "23px 'ChunkFiveRegular'",
+      "color": "maroon"
+    })
+}
+
 function agetransition(myTom){
+//start a game timer
+let tomclock=setTimeout(()=>{
+    console.log("The tomclock vaues " + myTom.currentState());
+},20000);
 
 }
 
@@ -135,57 +186,34 @@ $btn.on('click',function(){
    const name = getName();
    const myTom = createTomagotchi(name);
    myTom.currentState();
-   const $para=$('#name-capture');
-   $para.find("p").html(`I am your lovely pet <span id="givenname">${myTom.name}</span>.<br> Play with me , feed me when i am hungry, turn off lights when i am tired`); 
-   $para.css({
-    "display":"flex",
-    "align-items":"center",
-    "width":"33vw",
-    "height":"24vh",
-    "background": "rgba(255,225,255,0)",
-    "border-radius": "30%",
-    "color":"white",
-    "top":"40%",
-    "left":"50%",
-    "position":"absolute",
-    "transform":"translate(-50%, -50%)",
-    "box-sizing": "border-box",
-    "padding": "10px 30px",
-    "font-family":"poppins",
-    "font-weight":"800",
-    "text-align": "center",
-    "color":"purple",
-     "border": "2px solid rgba(255,255,255,0.2)",
-    // "font-size": "20 px",
-    "position": "absolute",
-    "transform": "translate(-50%, -50%) skewY(-6deg)",
-    "transform-origin": "bottom left",
-    // "color": "#fff",
-	// "text-shadow": "0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135",
-    // "font": "20px 'ChunkFiveRegular'"
-    "color": "#fff",
-	"text-shadow": "0px -1px 4px white, 0px -2px 10px yellow, 0px -10px 20px #ff8000, 0px -18px 40px red",
-	"font": "30px 'BlackJackRegular'"
-  })
-
-
+   setcss(myTom);
+   
    //Change the meters every second for now.
    updateMeters(myTom);
    
     //work on timers
-   createTimers(myTom);
+   idleTimers(myTom);
 
    //Actions on buttons. count passed to increment images
    let count=0;
-   gameison(myTom,count);
-
-   //transition on age
-    agetransition(myTom);
-
+   let character = "cat"
+   gameison(myTom,count,character);
+   
    //pet killer
    petkiller(myTom);
    
+   //transition on age
+   character = "puppy"
+   let agetransition = setTimeout(()=>{
+       alert('Time to change characters');
+       //reset the meters
+        myTom.boredom = 1;
+        myTom.boredom = 1;
+        myTom.hunger = 1;
+       //change the characters. use variables to change img src
+       gameison(myTom,count,character);
 
+   },60000,character);
 
 })
 
