@@ -12,14 +12,18 @@ class tomagotchi{
         this.boredom = boredom;
     } 
     feed(){
-        this.hunger--;
+        if(this.hunger>1)
+            this.hunger--;
     }
     lightsOff(){
-        this.sleepiness--;
+        if(this.sleepiness >1)
+            this.sleepiness--;
         this.boredom++;
+        
     }
     petPlay(){
-        this.boredom--;
+        if(this.boredom > 1)
+            this.boredom--;
         this.hunger++;
     }
     currentState(){
