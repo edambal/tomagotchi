@@ -98,7 +98,8 @@ function gameison(myTom,count,character){
             let imgsrc;
             imgsrc = `./images/${character}play${count}.png`;
             $image.attr("src",imgsrc);
-        },300);    
+        },200); 
+         
         myTom.petPlay();
         
      })
@@ -115,7 +116,11 @@ function petkiller(myTom){
     setInterval(()=>{
         //Check if any of the meters have reached end of it
         if(myTom.hunger > 9 || myTom.sleepiness > 9 || myTom.boredom > 9){
-        alert('you killed your pet');
+        alert('You killed your pet. Click OK and Refresh page to start a new game');
+        
+        //Hide the game since pet is killed
+        $gameplay.hide();
+        
         //reset vales
         myTom.hunger = 1;
         myTom.boredom =1;
@@ -212,7 +217,7 @@ $btn.on('click',function(){
    petkiller(myTom);
    
    //transition on age
-   character = "snoopy"
+   character = "cat"
    let agetransition = setTimeout(()=>{
        alert('Time to change characters');
        //reset the meters
