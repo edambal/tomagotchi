@@ -192,7 +192,11 @@ $gameplay.hide();
 $btn.on('click',function(){
     console.log("button is clicked");
     $('#bg').hide(5000);
-    $('body').css('background-image',`url('/Users/sravanthiedam/sei/deliverables/tomagotchi/images/GamingBackground2.jpg')`);
+    $('body').css({
+        "background":"linear-gradient(90deg, rgba(2,0,0.6,1) 0%, rgba(9,9,121,1) 35%, rgba(0,121,5,0.6) )"
+    })
+        
+        // `url('/Users/sravanthiedam/sei/deliverables/tomagotchi/images/GamingBackground2.jpg')`);
     
     //$('#bg').css('background-image','none');
     $main.hide(5000);
