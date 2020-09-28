@@ -89,7 +89,7 @@ function gameison(myTom,count,character){
             let imgsrc;
             imgsrc = `./images/${character}play${count}.png`;
             $image.attr("src",imgsrc);
-        },1000);    
+        },300);    
         myTom.petPlay();
         
      })
@@ -196,14 +196,14 @@ $btn.on('click',function(){
 
    //Actions on buttons. count passed to increment images
    let count=0;
-   let character = "cat"
+   let character = "puppy"
    gameison(myTom,count,character);
    
    //pet killer
    petkiller(myTom);
    
    //transition on age
-   character = "puppy"
+   character = "snoopy"
    let agetransition = setTimeout(()=>{
        alert('Time to change characters');
        //reset the meters
