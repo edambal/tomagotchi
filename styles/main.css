@@ -92,6 +92,8 @@
 
   .image{
     background-color: yellow;
+    position: absolute;
+    top: 50px;
     width:20vw;
     height:20vh;
   }

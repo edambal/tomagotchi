@@ -73,6 +73,11 @@ function gameison(myTom,count,character){
     // clearInterval(timer);
     console.log(character);
     imgsrc = `./images/${character}Original1.png`;
+    setInterval(()=>{
+        $image.animate({left: "+=60"}, 2000);
+        $image.animate({left: "-=60"}, 1000);
+    },500);
+    
     $image.attr("src",imgsrc);
     $('#feedme').on('click',function(){
         //console.log(images.attr("src"));
