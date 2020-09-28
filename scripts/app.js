@@ -217,13 +217,15 @@ $btn.on('click',function(){
    petkiller(myTom);
    
    //transition on age
-   character = "cat"
+   character = "snoopy"
    let agetransition = setTimeout(()=>{
        alert('Time to change characters');
        //reset the meters
+        myTom.name = "snoopy";
         myTom.boredom = 1;
         myTom.boredom = 1;
         myTom.hunger = 1;
+        setcss(myTom);
        //change the characters. use variables to change img src
        gameison(myTom,count,character);
 
