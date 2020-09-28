@@ -62,6 +62,7 @@ function updateMeters(myTom){
         $('#hunger').val(myTom.hunger);
         $('#sleepiness').val(myTom.sleepiness);
         $('#boredom').val(myTom.boredom);
+        $('#age').val(myTom.age);
        },700)
 }
 
@@ -162,9 +163,8 @@ function setcss(myTom){
       "font" : "45px 'ChunkFiveRegular'",
       "color": "maroon"
   })
-  //console.log($para.find("p").html());
-
-    $('#clue').css({
+  
+  $('#clue').css({
         "font" : "23px 'ChunkFiveRegular'",
       "color": "maroon"
     })
@@ -216,6 +216,12 @@ $btn.on('click',function(){
    //pet killer
    petkiller(myTom);
    
+   //add age every 45 seconds and update the meters.
+    setInterval(()=>{
+        myTom.age++;
+        updateMeters(myTom);
+    },45000);
+    
    //transition on age
    character = "snoopy"
    let agetransition = setTimeout(()=>{
